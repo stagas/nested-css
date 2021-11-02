@@ -81,7 +81,7 @@ ___
 
 ▸ **cssToJs**(`input`): `Partial`<`CSSStyleDeclaration`\>
 
-Convert a CSS string to a nested JS style object.
+Convert a CSS string to a [NestedCSSDeclaration](README.md#nestedcssdeclaration).
 
 #### Parameters
 

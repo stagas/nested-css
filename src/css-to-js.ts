@@ -13,7 +13,7 @@ const tokenizer = createTokenizer(
 )
 
 /**
- * Convert a CSS string to a nested JS style object.
+ * Convert a CSS string to a {@link NestedCSSDeclaration}.
  *
  * @param input
  */
