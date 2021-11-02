@@ -1,0 +1,70 @@
+{
+  "name": "nested-css",
+  "author": "stagas",
+  "short": "stagas/nested-css",
+  "description": "compile nested css rules",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://git@github.com:stagas/nested-css.git"
+  },
+  "keywords": [],
+  "source": "src/index.ts",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "watch": "parcel watch",
+    "build": "parcel build",
+    "examples": "parcel examples/index.html --https --open --port 8080",
+    "test": "web-test-runner src/**/*.spec.ts --node-resolve --esbuild-target auto",
+    "test:watch": "npm run test -- --watch",
+    "cov": "web-test-runner src/**/*.spec.ts --node-resolve --esbuild-target auto --coverage",
+    "cov:watch": "npm run cov -- --watch",
+    "docs": "typedoc src/index.ts --emit docs --readme none --gitRevision main --githubPages false --publicPath '' --hideBreadcrumbs",
+    "docs:watch": "onchange -i src --await-write-finish 400 -- npm run docs",
+    "lint": "eslint src examples",
+    "lint:fix": "npm run lint -- --fix",
+    "fmt": "prettier --write src examples",
+    "prepack": "npm run clean && npm run build",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@esm-bundle/chai": "^4.3.4-fix.0",
+    "@parcel/config-default": "^2.0.0",
+    "@parcel/packager-ts": "^2.0.0",
+    "@parcel/transformer-typescript-types": "^2.0.0",
+    "@parcel/validator-typescript": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "@web/dev-server-esbuild": "^0.2.15",
+    "@web/test-runner": "^0.13.20",
+    "eslint": "^8.1.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "onchange": "^7.1.0",
+    "parcel": "^2.0.0",
+    "prettier": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "typedoc": "^0.22.7",
+    "typedoc-plugin-markdown": "^3.11.3",
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "tokenizer-next": "^1.0.0"
+  }
+}
