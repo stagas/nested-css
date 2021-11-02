@@ -23,7 +23,7 @@ $ npm i nested-css
 
 ## Examples
 
-`examples/basic/script.ts` :
+[`examples/basic/script.ts`](examples/basic/script.ts) :
 
 ```ts
 import { css } from '../../src'
@@ -59,7 +59,7 @@ console.log(style(null, new Map([['foo', 'bar']])))
 // .bar:hover{color:green}
 ```
 
-`examples/css-to-js/script.ts` :
+[`examples/css-to-js/script.ts`](examples/css-to-js/script.ts) :
 
 ```ts
 import { cssToJs } from '../../src'
@@ -90,7 +90,7 @@ console.log(style)
 */
 ```
 
-`examples/js-to-css/script.ts` :
+[`examples/js-to-css/script.ts`](examples/js-to-css/script.ts) :
 
 ```ts
 import { jsToCss } from '../../src'
