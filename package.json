@@ -5,7 +5,6 @@
   "description": "compile nested css rules",
   "version": "1.0.0",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://git@github.com:stagas/nested-css.git"
