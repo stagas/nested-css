@@ -26,9 +26,9 @@ export function cssToJs(input: string) {
     let token
 
     while ((token = next())) {
-      const { value, kind } = token
+      const { value, group } = token
 
-      switch (kind) {
+      switch (group) {
         case 'rule':
           next() // open {
           parse((style[value.trim()] = {}))
