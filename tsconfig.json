@@ -1,15 +1,29 @@
 {
+  "extends": "@tsconfig/node16/tsconfig.json",
   "include": [
-    "src/**/*",
+    "playground",
+    "benchmark",
+    "example",
+    "src"
   ],
-  "exclude": [
-    "src/**/*.spec.ts"
-  ],
+  "ts-node": {
+    "files": true
+  },
   "compilerOptions": {
+    "lib": [
+      "dom"
+    ],
+    "outDir": "dist",
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "isolatedModules": true,
-    "target": "es2021",
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
     "strict": true
   }
 }

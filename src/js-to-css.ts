@@ -3,11 +3,9 @@
 import type { NestedCSSDeclaration } from './types'
 import { kebabCase } from './util'
 
-const mediaRule = (rule: string, media: string) =>
-  media ? `${media}{${rule}}` : rule
+const mediaRule = (rule: string, media: string) => (media ? `${media}{${rule}}` : rule)
 
-const createRule = (target: string, prop: string, value: string) =>
-  `${target}{${kebabCase(prop)}:${value}}`
+const createRule = (target: string, prop: string, value: string) => `${target}{${kebabCase(prop)}:${value}}`
 
 // const isClassOrRoot = /^\s*[.:]/g
 
@@ -43,17 +41,13 @@ const remap = (target: string, map?: Map<string, string>) =>
  *  you will need a `foo=bar` entry)
  * @returns The compiled CSS string
  */
-export function jsToCss(
-  rules: NestedCSSDeclaration,
-  rootSelector?: string | void,
-  aliasMap?: Map<string, string>
-) {
-  rootSelector ??= ':host'
+export function jsToCss(rules: NestedCSSDeclaration, rootSelector?: string | null | undefined, aliasMap?: Map<string, string>) {
+  rootSelector ??= ''
 
   let css = ''
 
   const parse = (rules: NestedCSSDeclaration, child = '', media = '') => {
-    for (let key in rules) {
+    for (const key in rules) {
       const value = rules[key]
 
       if (typeof value === 'object') {
@@ -62,31 +56,30 @@ export function jsToCss(
         let target = child
 
         if (!isMedia) {
-          key = /^&/.test(key) ? key.slice(1) : ' ' + key
-
-          target = child
+          target = key
             .split(',')
-            .map(x => x + key.replace(/&/g, x.trim()))
+            .map(k => k.trim())
+            .map(k =>
+              child
+                .split(',')
+                .map(x => (x + (/^&/.test(k) ? k.slice(1) : ' ' + k)).trim())
+                .join(',')
+            )
+            .map(k => k.trim())
             .join(',')
         }
 
         parse(value, target, isMedia || media)
       } else {
-        const rule = mediaRule(
-          createRule(
-            child ? remap(child, aliasMap) : rootSelector!,
-            key,
-            value
-          ),
-          media
-        )
-
+        const rule = mediaRule(createRule(child ? remap(child, aliasMap) : rootSelector!, key, value), media)
         css += '\n' + rule.trim()
       }
     }
   }
 
-  parse(rules)
+  parse({
+    [rootSelector]: rules,
+  } as NestedCSSDeclaration)
 
   return css.trim()
 }

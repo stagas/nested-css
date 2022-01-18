@@ -4,10 +4,7 @@
  * @param parts
  * @param values
  */
-export function joinPartsWithValues(
-  parts: TemplateStringsArray,
-  values: unknown[]
-) {
+export function joinPartsWithValues(parts: TemplateStringsArray, values: unknown[]) {
   let str = ''
   for (let i = 0; i < parts.length; i++) {
     str += parts[i]
@@ -23,7 +20,5 @@ export function joinPartsWithValues(
  * @param s PascalCase or camelCase string
  */
 export function kebabCase(s: string) {
-  return s
-    .replace(/[A-Z]/g, (m: string, i: number) => (i ? '-' : '') + m)
-    .toLowerCase()
+  return s.replace(/[A-Z]/g, (m: string, i: number) => (i ? '-' : '') + m).toLowerCase()
 }

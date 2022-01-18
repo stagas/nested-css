@@ -1,4 +1,3 @@
-import { expect } from '@esm-bundle/chai'
 import { cssToJs } from './css-to-js'
 
 describe('css to js', () => {
@@ -36,20 +35,20 @@ describe('css to js', () => {
       }
     `)
 
-    expect(result).to.deep.equal({
+    expect(result).toEqual({
       color: 'magenta',
 
       ':root': {
         color: 'blue',
-        background: 'green'
+        background: 'green',
       },
 
       '.foo, .bar': {
         color: 'red',
 
         '&:hover': {
-          color: 'yellow'
-        }
+          color: 'yellow',
+        },
       },
 
       'deep .selector:hover foo::after': {
@@ -58,13 +57,13 @@ describe('css to js', () => {
         '.deep': {
           '.nested': {
             '&:focus': {
-              visibility: 'hidden'
-            }
-          }
+              visibility: 'hidden',
+            },
+          },
         },
 
-        content: "'continues'"
-      }
+        content: "'continues'",
+      },
     })
   })
 
@@ -72,8 +71,19 @@ describe('css to js', () => {
     const result = cssToJs(`
       color:
     `)
-    expect(result).to.deep.equal({
-      color: undefined
-    })
+    expect(result).toEqual({ color: undefined })
+  })
+
+  it('should parse root &', () => {
+    const result = cssToJs(`
+      color: magenta;
+      & {
+        color: yellow;
+        .another {
+          color: blue;
+        }
+      }
+    `)
+    expect(result).toEqual({ color: 'magenta', '&': { color: 'yellow', '.another': { color: 'blue' } } })
   })
 })

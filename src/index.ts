@@ -6,10 +6,7 @@ import { joinPartsWithValues } from './util'
 /**
  * Compile to CSS passing parameters to {@link jsToCss}.
  */
-export type NestedCSSCompiler = (
-  rootSelector?: string,
-  aliasMap?: Map<string, string>
-) => string
+export type NestedCSSCompiler = (rootSelector?: string, aliasMap?: Map<string, string>) => string
 
 /**
  * Factory a {@link NestedCSSCompiler} for the given string.
@@ -17,10 +14,7 @@ export type NestedCSSCompiler = (
  * @param parts
  * @param values
  */
-export function css(
-  parts: TemplateStringsArray,
-  ...values: unknown[]
-): NestedCSSCompiler {
+export function css(parts: TemplateStringsArray, ...values: unknown[]): NestedCSSCompiler {
   const nestedCssString = joinPartsWithValues(parts, values)
   const nestedCssObject = cssToJs(nestedCssString)
 

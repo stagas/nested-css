@@ -1,4 +1,3 @@
-import { expect } from '@esm-bundle/chai'
 import { css } from './'
 
 describe('css', () => {
@@ -18,16 +17,33 @@ describe('css', () => {
       }
     `
 
-    expect(style).to.be.a('function')
+    expect(style).toBeInstanceOf(Function)
 
-    expect(style()).to.equal(`.some .nested{color:blue}
+    expect(style('')).toEqual(`.some .nested{color:blue}
 .some:hover{color:red}
 #someid{background:yellow}`)
   })
 
+  it('replace given host', () => {
+    const style = css`
+      color: red;
+      & {
+        color: blue;
+        .another {
+          color: yellow;
+        }
+      }
+    `
+    expect(style('foo')).toEqual(`foo{color:red}
+foo{color:blue}
+foo .another{color:yellow}`)
+  })
+
   it('should compile complex nested css string', () => {
     const style = css`
-      color: magenta;
+      :host {
+        color: magenta;
+      }
 
       :root {
         color: blue;
@@ -63,13 +79,13 @@ describe('css', () => {
       }
     `
 
-    expect(style()).to.equal(`\
+    expect(style('')).toEqual(`\
 :host{color:magenta}
 :root{color:blue}
 :root{background:green}
-.foo, .bar{color:red}
-.foo:hover, .foo:focus, .bar:hover, .bar:focus{color:yellow}
-.foo:hover span, .foo:focus span, .bar:hover span, .bar:focus span{display:none}
+.foo,.bar{color:red}
+.foo:hover,.bar:hover,.foo:focus,.bar:focus{color:yellow}
+.foo:hover span,.bar:hover span,.foo:focus span,.bar:focus span{display:none}
 deep .selector:hover foo::after{margin:0 auto}
 deep .selector:hover foo::after .deep .nested:focus{visibility:hidden}
 deep .selector:hover foo::after{content:'continues'}`)
