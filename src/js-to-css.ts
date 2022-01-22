@@ -5,7 +5,8 @@ import { kebabCase } from './util'
 
 const mediaRule = (rule: string, media: string) => (media ? `${media}{${rule}}` : rule)
 
-const createRule = (target: string, prop: string, value: string) => `${target}{${kebabCase(prop)}:${value}}`
+const createRule = (target: string, prop: string, value: string) =>
+  `${target}{${kebabCase(prop)}:${value}}`
 
 // const isClassOrRoot = /^\s*[.:]/g
 
@@ -41,7 +42,11 @@ const remap = (target: string, map?: Map<string, string>) =>
  *  you will need a `foo=bar` entry)
  * @returns The compiled CSS string
  */
-export function jsToCss(rules: NestedCSSDeclaration, rootSelector?: string | null | undefined, aliasMap?: Map<string, string>) {
+export function jsToCss(
+  rules: NestedCSSDeclaration,
+  rootSelector?: string | null | undefined,
+  aliasMap?: Map<string, string>
+) {
   rootSelector ??= ''
 
   let css = ''
@@ -71,7 +76,10 @@ export function jsToCss(rules: NestedCSSDeclaration, rootSelector?: string | nul
 
         parse(value, target, isMedia || media)
       } else {
-        const rule = mediaRule(createRule(child ? remap(child, aliasMap) : rootSelector!, key, value), media)
+        const rule = mediaRule(
+          createRule(child ? remap(child, aliasMap) : rootSelector!, key, value),
+          media
+        )
         css += '\n' + rule.trim()
       }
     }
