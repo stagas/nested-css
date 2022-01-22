@@ -1,4 +1,4 @@
-import { jsToCss } from './js-to-css'
+import { jsToCss } from '../src/js-to-css'
 
 describe('jsToCss', () => {
   it('should create style', () => {
@@ -22,13 +22,21 @@ describe('jsToCss', () => {
   })
 
   it('should remap descendants of & to custom host', () => {
-    const css = jsToCss({ color: 'blue', '&': { color: 'yellow', '.child': { color: 'red' } } }, 'somehost')
+    const css = jsToCss(
+      { color: 'blue', '&': { color: 'yellow', '.child': { color: 'red' } } },
+      'somehost'
+    )
     expect(css).toEqual('somehost{color:blue}\nsomehost{color:yellow}\nsomehost .child{color:red}')
   })
 
   it('should assign everything under the custom host', () => {
-    const css = jsToCss({ color: 'blue', '.child': { color: 'red' }, '>': { button: { color: 'blue' } } }, 'somehost')
-    expect(css).toEqual('somehost{color:blue}\nsomehost .child{color:red}\nsomehost > button{color:blue}')
+    const css = jsToCss(
+      { color: 'blue', '.child': { color: 'red' }, '>': { button: { color: 'blue' } } },
+      'somehost'
+    )
+    expect(css).toEqual(
+      'somehost{color:blue}\nsomehost .child{color:red}\nsomehost > button{color:blue}'
+    )
   })
 
   it('should create media style', () => {
@@ -91,12 +99,20 @@ deep .selector:hover foo::after{content:'continues'}`)
   })
 
   it('should remap nested tag names', () => {
-    const css = jsToCss({ foo: { '&:hover': { color: 'blue' }, '#another': { color: 'red' } } }, null, new Map([['foo', 'bar']]))
+    const css = jsToCss(
+      { foo: { '&:hover': { color: 'blue' }, '#another': { color: 'red' } } },
+      null,
+      new Map([['foo', 'bar']])
+    )
     expect(css).toContain(`bar:hover{color:blue}`)
   })
 
   it('should remap nested tag names with hyphens', () => {
-    const css = jsToCss({ 'foo-x': { '&:hover': { color: 'blue' } } }, null, new Map([['foo-x', 'bar-y']]))
+    const css = jsToCss(
+      { 'foo-x': { '&:hover': { color: 'blue' } } },
+      null,
+      new Map([['foo-x', 'bar-y']])
+    )
     expect(css).toContain(`bar-y:hover{color:blue}`)
   })
 })

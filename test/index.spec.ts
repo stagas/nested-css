@@ -1,4 +1,4 @@
-import { css } from './'
+import { css } from '../src'
 
 describe('css', () => {
   it('should compile a nested css string to css', () => {

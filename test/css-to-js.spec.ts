@@ -1,4 +1,4 @@
-import { cssToJs } from './css-to-js'
+import { cssToJs } from '../src/css-to-js'
 
 describe('css to js', () => {
   it('should parse css to js object', () => {
@@ -84,6 +84,9 @@ describe('css to js', () => {
         }
       }
     `)
-    expect(result).toEqual({ color: 'magenta', '&': { color: 'yellow', '.another': { color: 'blue' } } })
+    expect(result).toEqual({
+      color: 'magenta',
+      '&': { color: 'yellow', '.another': { color: 'blue' } },
+    })
   })
 })
