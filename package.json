@@ -3,7 +3,7 @@
   "author": "stagas",
   "short": "stagas/nested-css",
   "description": "compile nested css rules",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -31,15 +31,15 @@
     "example": "fpick example --repeat -- node -r esbuild-register",
     "playground": "vite --force --cors --https --clearScreen=false --open /playground/",
     "lint": "eslint src && prettier --check src",
-    "build:watch": "tsc --outDir dist/esm --module esnext --watch & tsc --outDir dist/cjs --watch",
+    "build:watch": "tsc -p tsconfig.dist.json --outDir dist/esm --module esnext --watch & tsc -p tsconfig.dist.json --outDir dist/cjs --watch",
     "docs:watch": "onchange -i src --await-write-finish 400 -- npm run docs",
     "test:watch": "jest --watchAll",
     "cov:watch": "jest --coverage --watchAll",
     "bench:watch": "fpick benchmark --repeat -- onchange -i src 'benchmark/**/*.{js,jsx,ts,tsx}' --await-write-finish 400 --kill -- node -r esbuild-register",
     "example:watch": "fpick example --repeat -- onchange -i src example --await-write-finish 400 --kill -- node -r esbuild-register",
-    "build:cjs": "tsc --outDir dist/cjs",
+    "build:cjs": "tsc -p tsconfig.dist.json --outDir dist/cjs",
     "build:cjs:watch": "tsc -p tsconfig.cjs.json --watch",
-    "build:esm": "tsc --outDir dist/esm --module esnext && echo '{\"type\":\"module\"}' >dist/esm/package.json",
+    "build:esm": "tsc -p tsconfig.dist.json --outDir dist/esm --module esnext && echo '{\"type\":\"module\"}' >dist/esm/package.json",
     "build:esm:watch": "tsc -p tsconfig.esm.json --watch",
     "build:min": "esbuild src/index.ts --bundle --format=esm | terser --compress --module --mangle -o nested-css.min.js",
     "lint:fix": "eslint --fix src && prettier --write src",
@@ -48,7 +48,8 @@
     "prepack:dry": "npm pack --dry-run",
     "prepare": "husky install && node .pull-configs.js",
     "test:node": "jest",
-    "prepush": "npm run lint && npm run test"
+    "prepush": "npm run lint && npm run test",
+    "start": "vite-open example/web.ts"
   },
   "devDependencies": {
     "@n1kk/intspector": "^1.0.2",
@@ -58,13 +59,13 @@
     "@swc-node/jest": "^1.4.3",
     "@tsconfig/node16": "^1.0.2",
     "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.10.0",
-    "@typescript-eslint/parser": "^5.10.0",
+    "@types/node": "^17.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
     "@web/dev-server-esbuild": "^0.2.16",
-    "@web/dev-server-rollup": "^0.3.14",
-    "@web/test-runner": "^0.13.25",
-    "esbuild": "^0.14.12",
+    "@web/dev-server-rollup": "^0.3.15",
+    "@web/test-runner": "^0.13.26",
+    "esbuild": "^0.14.14",
     "esbuild-register": "^3.3.2",
     "eslint": "^8.7.0",
     "eslint-config-html-jsx": "^1.0.0",
@@ -82,7 +83,7 @@
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5",
     "vite": "^2.7.13",
-    "vite-open": "^1.1.0"
+    "vite-open": "^1.2.0"
   },
   "dependencies": {
     "tokenizer-next": "^3.0.0"
