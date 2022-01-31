@@ -24,6 +24,30 @@ describe('css', () => {
 #someid{background:yellow}`)
   })
 
+  it('valueOf() should be the compile function', () => {
+    const style = css`
+      .some {
+        .nested {
+          color: blue;
+        }
+        &:hover {
+          color: red;
+        }
+      }
+
+      #someid {
+        background: yellow;
+      }
+    `
+
+    expect(style).toBeInstanceOf(Function)
+    expect(style.valueOf).toBe(style)
+
+    expect(style.valueOf('')).toEqual(`.some .nested{color:blue}
+.some:hover{color:red}
+#someid{background:yellow}`)
+  })
+
   it('replace given host', () => {
     const style = css`
       color: red;
