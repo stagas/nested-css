@@ -62,7 +62,7 @@ describe('css to js', () => {
           },
         },
 
-        content: "'continues'",
+        content: '\'continues\'',
       },
     })
   })
@@ -72,6 +72,25 @@ describe('css to js', () => {
       color:
     `)
     expect(result).toEqual({ color: undefined })
+  })
+
+  it('should ignore string content', () => {
+    const result = cssToJs(`
+      content: ':;\\'"';
+      color: blue;
+      .other {
+        content: ":;\\"'";
+        color: blue;
+      }
+    `)
+    expect(result).toEqual({
+      content: '\':;\\\'"\'',
+      color: 'blue',
+      '.other': {
+        content: '":;\\"\'"',
+        color: 'blue',
+      },
+    })
   })
 
   it('should parse root &', () => {
