@@ -13,7 +13,7 @@ compile nested css rules
  · <a href="https://github.com/stagas/nested-css/issues">🖐️ <strong>Help</strong></a>
 </p>
 
-***
+---
 
 ## Install
 
@@ -100,9 +100,9 @@ const rules = {
   '.foo': {
     color: 'blue',
     '&:hover': {
-      color: 'green'
-    }
-  }
+      color: 'green',
+    },
+  },
 }
 
 const style = jsToCss(rules)
@@ -135,18 +135,18 @@ console.log(jsToCss(rules, null, new Map([['foo', 'bar']])))
 
 #### Table of Contents
 
-*   [cssToJs](#csstojs)
-    *   [Parameters](#parameters)
-*   [NestedCSSCompiler](#nestedcsscompiler)
-*   [css](#css)
-    *   [Parameters](#parameters-1)
-*   [jsToCss](#jstocss)
-    *   [Parameters](#parameters-2)
-*   [NestedCSSDeclaration](#nestedcssdeclaration)
-*   [joinPartsWithValues](#joinpartswithvalues)
-    *   [Parameters](#parameters-3)
-*   [kebabCase](#kebabcase)
-    *   [Parameters](#parameters-4)
+- [cssToJs](#csstojs)
+  - [Parameters](#parameters)
+- [NestedCSSCompiler](#nestedcsscompiler)
+- [css](#css)
+  - [Parameters](#parameters-1)
+- [jsToCss](#jstocss)
+  - [Parameters](#parameters-2)
+- [NestedCSSDeclaration](#nestedcssdeclaration)
+- [joinPartsWithValues](#joinpartswithvalues)
+  - [Parameters](#parameters-3)
+- [kebabCase](#kebabcase)
+  - [Parameters](#parameters-4)
 
 ### cssToJs
 
@@ -156,7 +156,7 @@ Convert a CSS string to a [NestedCSSDeclaration](#nestedcssdeclaration).
 
 #### Parameters
 
-*   `input` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
+- `input` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)**&#x20;
 
 ### NestedCSSCompiler
 
@@ -174,8 +174,8 @@ Factory a [NestedCSSCompiler](#nestedcsscompiler) for the given string.
 
 #### Parameters
 
-*   `parts` **TemplateStringsArray**&#x20;
-*   `values` **...[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<any>**&#x20;
+- `parts` **TemplateStringsArray**&#x20;
+- `values` **...[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<any>**&#x20;
 
 Returns **[NestedCSSCompiler](#nestedcsscompiler)**&#x20;
 
@@ -202,10 +202,10 @@ jsToCss({ '.foo': { color: 'blue' } }, null, new Map([['foo', 'bar']]))
 
 #### Parameters
 
-*   `rules` **[NestedCSSDeclaration](#nestedcssdeclaration)** Rules object
-*   `rootSelector` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | null | [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined))?** Top level rules will use this selector
-*   `aliasMap` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>?** Alias identifiers (i.e for `.foo` to become `.bar`
-    you will need a `foo=bar` entry)
+- `rules` **[NestedCSSDeclaration](#nestedcssdeclaration)** Rules object
+- `rootSelector` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) | null | [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined))?** Top level rules will use this selector
+- `aliasMap` **[Map](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Map)<[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String), [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)>?** Alias identifiers (i.e for `.foo` to become `.bar`
+  you will need a `foo=bar` entry)
 
 Returns **any** The compiled CSS string
 
@@ -225,8 +225,8 @@ Joins parts with values
 
 #### Parameters
 
-*   `parts` **TemplateStringsArray**&#x20;
-*   `values` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<any>**&#x20;
+- `parts` **TemplateStringsArray**&#x20;
+- `values` **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)\<any>**&#x20;
 
 ### kebabCase
 
@@ -236,7 +236,7 @@ Convert string to kebab-case.
 
 #### Parameters
 
-*   `s` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** PascalCase or camelCase string
+- `s` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** PascalCase or camelCase string
 
 ## Contribute
 

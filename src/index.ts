@@ -7,10 +7,12 @@ import { joinPartsWithValues } from './util'
 /**
  * Compile to CSS passing parameters to {@link jsToCss}.
  */
-export type NestedCSSCompiler = ((
-  rootSelector?: string,
-  aliasMap?: Map<string, string>
-) => string) & { valueOf: NestedCSSCompiler }
+export type NestedCSSCompiler =
+  & ((
+    rootSelector?: string,
+    aliasMap?: Map<string, string>,
+  ) => string)
+  & { valueOf: NestedCSSCompiler }
 
 /**
  * Factory a {@link NestedCSSCompiler} for the given string.

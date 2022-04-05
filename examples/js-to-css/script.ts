@@ -5,9 +5,9 @@ const rules = {
   '.foo': {
     color: 'blue',
     '&:hover': {
-      color: 'green'
-    }
-  }
+      color: 'green',
+    },
+  },
 }
 
 const style = jsToCss(rules)

@@ -24,7 +24,7 @@ describe('jsToCss', () => {
   it('should remap descendants of & to custom host', () => {
     const css = jsToCss(
       { color: 'blue', '&': { color: 'yellow', '.child': { color: 'red' } } },
-      'somehost'
+      'somehost',
     )
     expect(css).toEqual('somehost{color:blue}\nsomehost{color:yellow}\nsomehost .child{color:red}')
   })
@@ -32,10 +32,10 @@ describe('jsToCss', () => {
   it('should assign everything under the custom host', () => {
     const css = jsToCss(
       { color: 'blue', '.child': { color: 'red' }, '>': { button: { color: 'blue' } } },
-      'somehost'
+      'somehost',
     )
     expect(css).toEqual(
-      'somehost{color:blue}\nsomehost .child{color:red}\nsomehost > button{color:blue}'
+      'somehost{color:blue}\nsomehost .child{color:red}\nsomehost > button{color:blue}',
     )
   })
 
@@ -61,7 +61,7 @@ describe('jsToCss', () => {
           },
         },
       },
-      ':host'
+      ':host',
     )
     expect(css).toEqual(`:host .foo,:host .bar{color:red}
 :host .foo:hover,:host .bar:hover{color:yellow}`)
@@ -80,7 +80,7 @@ describe('jsToCss', () => {
           },
         },
 
-        content: "'continues'",
+        content: '\'continues\'',
       },
     })
     expect(css).toEqual(`deep .selector:hover foo::after{margin:0 auto}
@@ -102,7 +102,7 @@ deep .selector:hover foo::after{content:'continues'}`)
     const css = jsToCss(
       { foo: { '&:hover': { color: 'blue' }, '#another': { color: 'red' } } },
       null,
-      new Map([['foo', 'bar']])
+      new Map([['foo', 'bar']]),
     )
     expect(css).toContain(`bar:hover{color:blue}`)
   })
@@ -111,7 +111,7 @@ deep .selector:hover foo::after{content:'continues'}`)
     const css = jsToCss(
       { 'foo-x': { '&:hover': { color: 'blue' } } },
       null,
-      new Map([['foo-x', 'bar-y']])
+      new Map([['foo-x', 'bar-y']]),
     )
     expect(css).toContain(`bar-y:hover{color:blue}`)
   })
