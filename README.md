@@ -150,7 +150,7 @@ console.log(jsToCss(rules, null, new Map([['foo', 'bar']])))
 
 ### cssToJs
 
-[src/css-to-js.ts:20-48](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/css-to-js.ts#L20-L48 "Source code on GitHub")
+[src/css-to-js.ts:21-49](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/css-to-js.ts#L21-L49 "Source code on GitHub")
 
 Convert a CSS string to a [NestedCSSDeclaration](#nestedcssdeclaration).
 
@@ -160,7 +160,7 @@ Convert a CSS string to a [NestedCSSDeclaration](#nestedcssdeclaration).
 
 ### NestedCSSCompiler
 
-[src/index.ts:10-13](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/index.ts#L7-L9 "Source code on GitHub")
+[src/index.ts:10-15](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/index.ts#L7-L9 "Source code on GitHub")
 
 Compile to CSS passing parameters to [jsToCss](#jstocss).
 
@@ -168,7 +168,7 @@ Type: any
 
 ### css
 
-[src/index.ts:21-32](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/index.ts#L21-L32 "Source code on GitHub")
+[src/index.ts:23-34](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/index.ts#L23-L34 "Source code on GitHub")
 
 Factory a [NestedCSSCompiler](#nestedcsscompiler) for the given string.
 
@@ -181,7 +181,7 @@ Returns **[NestedCSSCompiler](#nestedcsscompiler)**&#x20;
 
 ### jsToCss
 
-[src/js-to-css.ts:45-93](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/js-to-css.ts#L45-L93 "Source code on GitHub")
+[src/js-to-css.ts:44-92](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/js-to-css.ts#L44-L92 "Source code on GitHub")
 
 Compile a JS nested rules [NestedCSSDeclaration](#nestedcssdeclaration) to a CSS string.
 
@@ -211,7 +211,7 @@ Returns **any** The compiled CSS string
 
 ### NestedCSSDeclaration
 
-[src/types.ts:6-8](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/types.ts#L3-L5 "Source code on GitHub")
+[src/types.ts:6-8](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/types.ts#L3-L5 "Source code on GitHub")
 
 Nested CSS rules.
 
@@ -219,7 +219,7 @@ Type: any
 
 ### joinPartsWithValues
 
-[src/util.ts:7-15](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/util.ts#L7-L15 "Source code on GitHub")
+[src/util.ts:7-15](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/util.ts#L7-L15 "Source code on GitHub")
 
 Joins parts with values
 
@@ -230,7 +230,7 @@ Joins parts with values
 
 ### kebabCase
 
-[src/util.ts:22-24](https://github.com/stagas/nested-css/blob/6df52c799f042bdbc4ace85b59452743504e199e/src/util.ts#L22-L24 "Source code on GitHub")
+[src/util.ts:22-24](https://github.com/stagas/nested-css/blob/d13f89af14dad53914cd1f71e8f91caf92b99167/src/util.ts#L22-L24 "Source code on GitHub")
 
 Convert string to kebab-case.
 
