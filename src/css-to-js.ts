@@ -32,7 +32,8 @@ export function cssToJs(input: string) {
       switch (group) {
         case 'rule':
           next() // open {
-          parse(style[value.trim()] = {})
+          // @ts-ignore can't handle the ??= for some reason
+          parse(style[value.trim()] ??= {})
           break
         case 'prop':
           style[value.trim()] = (next()?.value as string)?.trim()

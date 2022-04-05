@@ -74,6 +74,33 @@ describe('css to js', () => {
     expect(result).toEqual({ color: undefined })
   })
 
+  it('cascade', () => {
+    const result = cssToJs(`
+      .name {
+        > span {
+          color: var(--blue);
+        }
+        position: absolute;
+      }
+      .name {
+        > span {
+          background: red;
+        }
+        display: block;
+      }
+    `)
+    expect(result).toEqual({
+      '.name': {
+        '> span': {
+          color: 'var(--blue)',
+          background: 'red',
+        },
+        position: 'absolute',
+        display: 'block',
+      },
+    })
+  })
+
   it('should ignore string content', () => {
     const result = cssToJs(`
       content: ':;\\'"';
