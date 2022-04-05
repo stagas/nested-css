@@ -167,4 +167,18 @@ describe('css to js', () => {
     `)
     expect(result).toMatchSnapshot()
   })
+
+  it('case brackets', () => {
+    const result = cssToJs(`
+      &:after {
+        content: ' {';
+        color: var(--white);
+      }
+      &:before {
+        content: ' }';
+        color: var(--white);
+      }
+    `)
+    expect(result).toMatchSnapshot()
+  })
 })

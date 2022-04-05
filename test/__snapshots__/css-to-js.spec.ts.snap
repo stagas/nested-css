@@ -1,5 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`css to js case brackets 1`] = `
+Object {
+  "&:after": Object {
+    "color": "var(--white)",
+    "content": "' {'",
+  },
+  "&:before": Object {
+    "color": "var(--white)",
+    "content": "' }'",
+  },
+}
+`;
+
 exports[`css to js comments case 2 1`] = `
 Object {
   ".info": Object {
