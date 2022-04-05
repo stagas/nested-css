@@ -135,4 +135,19 @@ describe('css to js', () => {
       '&': { color: 'yellow', '.another': { color: 'blue' } },
     })
   })
+
+  it('comments in strings', () => {
+    const result = cssToJs(`
+      .short-text {
+        font-style: italic;
+        &:before {
+          content: '/* ';
+        }
+        &:after {
+          content: '*/ ';
+        }
+      }
+    `)
+    expect(result).toMatchSnapshot()
+  })
 })

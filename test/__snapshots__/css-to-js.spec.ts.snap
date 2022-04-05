@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css to js comments in strings 1`] = `
+Object {
+  ".short-text": Object {
+    "&:after": Object {
+      "content": "'*/ '",
+    },
+    "&:before": Object {
+      "content": "'/* '",
+    },
+    "font-style": "italic",
+  },
+}
+`;

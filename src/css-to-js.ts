@@ -1,15 +1,15 @@
 import { createTokenizer } from 'tokenizer-next'
 import type { NestedCSSDeclaration } from './types'
 
-const comments = /\/\*[^]*?\*\//g
 const extraWhitespace = /\s+/g
 
 const tokenizer = createTokenizer(
   /(?<open>\s*\{\s*)/,
   /(?<close>\s*\}\s*)/,
+  /(?<comment>\/\*[^]*?\*\/)/,
   /\s*(?<rule>[^{;}]+)\s+?(?={)/,
   /\s*(?<string>'.*?'|".*?")(?=;)/,
-  /\s*(?<prop>[^:;]+)(?=:)/,
+  /\s*(?<prop>[^:;/]+)(?=:)/,
   /\s*(?<value>[^:;]+)(?=;)/,
 )
 
@@ -19,9 +19,16 @@ const tokenizer = createTokenizer(
  * @param input
  */
 export function cssToJs(input: string) {
-  input = input.replace(comments, ' ').replace(extraWhitespace, ' ')
+  input = input.replace(extraWhitespace, ' ')
 
-  const next = tokenizer(input)
+  const nextToken = tokenizer(input)
+  const filter = (ignored: string[]) => (() => {
+    let token
+    while (token = nextToken())
+      if (!ignored.includes(token.group)) break
+    return token
+  })
+  const next = filter(['comment'])
 
   const parse = (style: NestedCSSDeclaration = {}) => {
     let token
