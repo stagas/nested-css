@@ -1,5 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`css to js comments case 2 1`] = `
+Object {
+  ".info": Object {
+    "> .type": Object {
+      "display": "inline-block",
+      "padding": "0",
+      "vertical-align": "top",
+    },
+  },
+}
+`;
+
 exports[`css to js comments in strings 1`] = `
 Object {
   ".short-text": Object {

@@ -150,4 +150,21 @@ describe('css to js', () => {
     `)
     expect(result).toMatchSnapshot()
   })
+
+  it('comments case 2', () => {
+    const result = cssToJs(`
+      .info {
+        > .type {
+          display: inline-block;
+          padding: 0;
+          vertical-align: top;
+          /*&:before {
+            content: ': ';
+            color: var(--red);
+          }*/
+        }
+      }
+    `)
+    expect(result).toMatchSnapshot()
+  })
 })
