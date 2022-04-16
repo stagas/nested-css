@@ -33,7 +33,7 @@
     "build:dist": "npm run build:bundle && npm run build:min",
     "cov:watch": "jest --coverage --watchAll",
     "clean": "rimraf dist",
-    "docs": "documentation readme src --resolve=node --pe ts --re ts --re d.ts --github --section=API --markdown-toc-max-depth=3 && dprint fmt README.md",
+    "docs": "dokio -o README.md && dprint fmt README.md",
     "test": "npm run test:node && npm run test:web",
     "test:node": "if find test -type f -iregex '.*\\.spec\\.\\(js\\|jsx\\|ts\\|tsx\\)$' | grep -q .; then jest; else echo no node tests; fi",
     "test:web": "if find test -type f -iregex '.*\\.spec\\.web\\.\\(js\\|jsx\\|ts\\|tsx\\)$' | grep -q .; then web-test-runner; else echo no web tests; fi",
@@ -50,7 +50,7 @@
     "prepack": "npm run clean && npm run build && (npm run build:dist || echo unable to bundle)",
     "prepack:dry": "npm pack --dry-run",
     "prepush": "npm run lint && npm run test",
-    "prepare": "husky install && node .pull-configs.js"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@n1kk/intspector": "1.0.2",
@@ -58,21 +58,23 @@
     "@stagas/documentation-fork": "13.2.5",
     "@stagas/jest-node-exports-resolver": "1.1.5-require-basedir-2",
     "@swc-node/jest": "1.4.3",
-    "@swc/cli": "0.1.56",
-    "@swc/core": "1.2.160",
+    "@swc/cli": "0.1.57",
+    "@swc/core": "1.2.164",
     "@tsconfig/node16": "1.0.2",
+    "@types/audioworklet": "0.0.26",
     "@types/jest": "27.4.1",
     "@types/node": "17.0.23",
-    "@typescript-eslint/eslint-plugin": "5.16.0",
-    "@typescript-eslint/parser": "5.16.0",
+    "@types/webmidi": "2.0.6",
+    "@typescript-eslint/eslint-plugin": "5.18.0",
+    "@typescript-eslint/parser": "5.18.0",
     "@web/dev-server-rollup": "0.3.15",
     "@web/test-runner": "0.13.27",
     "bunzee": "^0.0.1",
     "chokidar": "3.5.3",
-    "dprint": "0.24.1",
-    "eslint": "8.12.0",
+    "dprint": "0.24.4",
+    "eslint": "8.13.0",
     "eslint-config-html-jsx": "1.0.0",
-    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-import": "2.26.0",
     "husky": "7.0.4",
     "jest": "27.5.1",
     "jest-browser-globals": "25.1.0-beta",
@@ -83,8 +85,9 @@
     "ts-jest": "27.1.4",
     "ts-node": "10.7.0",
     "typescript": "4.6.3",
-    "vite-open": "^1.4.2",
-    "vite-web-test-runner-plugin": "0.1.0"
+    "vite-open": "^1.6.2",
+    "vite-web-test-runner-plugin": "0.1.0",
+    "wtr-plugin-vite": "^0.0.1"
   },
   "dependencies": {
     "tokenizer-next": "^3.0.0"
@@ -94,7 +97,8 @@
     "bunzee",
     "decarg",
     "pull-configs",
-    "vite-open"
+    "vite-open",
+    "wtr-plugin-vite"
   ],
   "types": "./dist/types/index.d.ts"
 }
