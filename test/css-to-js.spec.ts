@@ -181,4 +181,21 @@ describe('css to js', () => {
     `)
     expect(result).toMatchSnapshot()
   })
+
+  it('keyframes', () => {
+    const result = cssToJs(/*css*/ `
+      @keyframes blink {
+        0% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.5);
+        }
+        100% {
+          filter: brightness(2);
+        }
+      }
+    `)
+    expect(result).toMatchSnapshot()
+  })
 })

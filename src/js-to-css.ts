@@ -56,10 +56,13 @@ export function jsToCss(
 
       if (typeof value === 'object') {
         const isMedia = /^@/.test(key) ? key : null
+        const isPct = /%$/.test(key)
 
         let target = child
 
-        if (!isMedia) {
+        if (isPct)
+          target = key
+        else if (!isMedia) {
           target = key
             .split(',')
             .map(k => k.trim())
@@ -72,7 +75,6 @@ export function jsToCss(
             .map(k => k.trim())
             .join(',')
         }
-
         parse(value, target, isMedia || media)
       } else {
         const rule = mediaRule(

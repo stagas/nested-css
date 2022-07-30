@@ -38,3 +38,19 @@ Object {
   },
 }
 `;
+
+exports[`css to js keyframes 1`] = `
+Object {
+  "@keyframes blink": Object {
+    "0%": Object {
+      "filter": "brightness(1)",
+    },
+    "100%": Object {
+      "filter": "brightness(2)",
+    },
+    "50%": Object {
+      "filter": "brightness(1.5)",
+    },
+  },
+}
+`;

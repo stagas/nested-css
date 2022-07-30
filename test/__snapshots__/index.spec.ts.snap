@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`css keyframes 1`] = `
+"@keyframes blink{0%{filter:brightness(1)}}
+@keyframes blink{50%{filter:brightness(1.5)}}
+@keyframes blink{100%{filter:brightness(2)}}"
+`;

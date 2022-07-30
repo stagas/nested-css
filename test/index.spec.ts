@@ -114,4 +114,21 @@ deep .selector:hover foo::after{margin:0 auto}
 deep .selector:hover foo::after .deep .nested:focus{visibility:hidden}
 deep .selector:hover foo::after{content:'continues'}`)
   })
+
+  it('keyframes', () => {
+    const style = css`
+      @keyframes blink {
+        0% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.5);
+        }
+        100% {
+          filter: brightness(2);
+        }
+      }
+    `
+    expect(style(':host')).toMatchSnapshot()
+  })
 })
