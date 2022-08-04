@@ -79,7 +79,7 @@ export function jsToCss(
       } else {
         const rule = mediaRule(
           createRule(child ? remap(child, aliasMap) : rootSelector!, key, value),
-          media,
+          media
         )
         css += '\n' + rule.trim()
       }
